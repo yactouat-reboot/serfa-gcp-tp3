@@ -207,6 +207,7 @@ What views/pages do we need ?
 - login page
 - home => lists all tickets
   - ability to delete a ticket
+  - priority of tickets
   - status labels of the tickets
   - ticket assignement button
 - registration page
@@ -217,6 +218,7 @@ What views/pages do we need ?
   - edit form for the ticket
   - field for resolution of ticket
   - label for ticket status
+  - priority of tickets
   - ticket assignement button
 - ticket creation page
 - users admin page:
@@ -240,3 +242,10 @@ Each ticket row has:
 - status labels of the tickets
 - ticket assignement button
 ```
+
+### moving on to 3-tier architecture
+
+Now we want to:
+
+- display the list of tickets dynamically (from the database)
+- restrict who can access the database directly => [3-tier architecture](https://fr.wikipedia.org/wiki/Architecture_trois_tiers)
