@@ -127,9 +127,55 @@ The first time you'll run this, you will encounter a permissions issue: it's bec
 
 Now if you copy again the file and go to `http://IP/test.txt` you should see the content of the file.
 
+Here is a diagram showing all the manual steps:
+
+```mermaid
+sequenceDiagram
+    participant Local Machine
+    participant Cloud VM
+
+    activate Local Machine
+    Local Machine->>Cloud VM: Connect to VM with SSH (gcloud)
+    deactivate Local Machine
+
+    activate Cloud VM
+    Cloud VM->>Local Machine: Quit VM
+    deactivate Cloud VM
+
+    activate Local Machine
+    Local Machine->>Local Machine: Generate SSH keys
+    deactivate Local Machine
+
+    activate Local Machine
+    Local Machine->>Cloud VM: Copy SSH keys to VM
+    deactivate Local Machine
+
+    activate Cloud VM
+    Cloud VM->>Cloud VM: Add SSH keys to authorized_keys
+    deactivate Cloud VM
+
+    activate Local Machine
+    Local Machine->>Cloud VM: Connect to VM with SSH (generic)
+    deactivate Local Machine
+
+    activate Cloud VM
+    Cloud VM->>Cloud VM: Change ownership of /var/www/html to VM user
+    deactivate Cloud VM
+
+    activate Local Machine
+    Local Machine->>Cloud VM: Upload test file to /var/www/html with scp
+    deactivate Local Machine
+
+    activate Local Machine
+    Local Machine->>Internet: Access test file via web browser
+    deactivate Local Machine
+
+    note over Local Machine: Cloud VM,Cloud VM: Success! File accessible.
+```
+
 Ok, now let's update our site with a pipeline !
 
-## automate the process
+### automate the process
 
 Now we are ready to do all of the above via GitHub Actions.
 
@@ -184,7 +230,7 @@ This pipeline basically says:
 5. check the VM's IP and see if the file was updated at `/test.txt` URL
 
 
-## deploy like in 2024
+#### deploy like in 2024
 
 - go inside the VM and delete the file `test.txt` (delete its creation inside the pipeline as well)
 - add the new GitHub Actions job that copies the contents of the `html` folder within the VM's `/var/www/html` folder
