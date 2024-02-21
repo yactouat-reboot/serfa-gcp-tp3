@@ -384,3 +384,15 @@ Now we want to:
 - with a volume, all our changes will be reflected in our repo
 
 Try this out ! run the Node.JS Docker Compose service, create a file inside the container under the `/app` folder, see it in your local machine.
+
+### becoming badass Javascript developers
+
+1. `npm init` from the dockerized Node.JS Docker Compose service
+2. this created a `package.json` file, which contains the list of all the JS dependencies (libraries) of our project
+3. we 've installed `firebase` and `webpack` with `npm install` from within our Node container
+  - `firebase` is the Node.JS version of the previous code we have put in our HTML
+  - `webpack` is the library that will help us translate the Node.JS code into something the browser can understand
+4. we moved the Firebase code from the frontend folder `html` to the `src` folder: this is the code that will be compiled by Webpack
+5. the guidelines of how to compile the code are specified in the `webpack.config.js` file
+6. we rebuilt our Docker app' image
+7. we checked in the browser if the database error has disappeared, and it has !
