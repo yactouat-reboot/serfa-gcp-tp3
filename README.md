@@ -70,6 +70,19 @@ gcloud compute instances create test-server \
 
 `docker build --build-arg PROJECT_NAME=markets-agent --build-arg SERVICE_ACCOUNT_EMAIL=vms-sa@markets-agent.iam.gserviceaccount.com -t gcp-vm .`
 
+But before moving on with the next step, here is a diagram showing this process:
+
+```mermaid
+graph TD
+    A[Create service account on GCP] --> B[Give service account permissions to manage VMs]
+    B --> C[Give service account role to use default compute service account]
+    C --> D[Generate JSON key for service account]
+    D --> E[Containerize script that uses gcloud CLI with JSON key]
+    E --> F[Create VM instance with startup script installing Apache]
+    F --> G[Enable HTTP traffic to VM by creating firewall rule]
+    G --> H[Visit IP of VM and see default Apache landing page]
+```
+
 ## CI/CD deployment
 
 Most of the Apache servers host your website files under `/var/www`.
@@ -115,19 +128,6 @@ The first time you'll run this, you will encounter a permissions issue: it's bec
 Now if you copy again the file and go to `http://IP/test.txt` you should see the content of the file.
 
 Ok, now let's update our site with a pipeline !
-
-But before moving on with the next step, here is a diagram showing this process:
-
-```mermaid
-graph TD
-    A[Create service account on GCP] --> B[Give service account permissions to manage VMs]
-    B --> C[Give service account role to use default compute service account]
-    C --> D[Generate JSON key for service account]
-    D --> E[Containerize script that uses gcloud CLI with JSON key]
-    E --> F[Create VM instance with startup script installing Apache]
-    F --> G[Enable HTTP traffic to VM by creating firewall rule]
-    G --> H[Visit IP of VM and see default Apache landing page]
-```
 
 ## automate the process
 
