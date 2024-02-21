@@ -392,7 +392,19 @@ Try this out ! run the Node.JS Docker Compose service, create a file inside the 
 3. we 've installed `firebase` and `webpack` with `npm install` from within our Node container
   - `firebase` is the Node.JS version of the previous code we have put in our HTML
   - `webpack` is the library that will help us translate the Node.JS code into something the browser can understand
+
+  ... these can be installed with `npm install firebase webpack webpack-cli`
+
 4. we moved the Firebase code from the frontend folder `html` to the `src` folder: this is the code that will be compiled by Webpack
-5. the guidelines of how to compile the code are specified in the `webpack.config.js` file
+5. the guidelines of how to compile the code are specified in the `webpack.config.js` file + we've added a script to compile the in our `package.json` file
+
+```json
+"scripts": {
+  "build": "webpack --mode=development"
+}
+```
+
+... now we can run `npm run build` and see the bundled code appear in `html/javascript/firebase-bundle.js` !
+
 6. we rebuilt our Docker app' image
 7. we checked in the browser if the database error has disappeared, and it has !
