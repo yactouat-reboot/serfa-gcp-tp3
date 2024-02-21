@@ -116,6 +116,19 @@ Now if you copy again the file and go to `http://IP/test.txt` you should see the
 
 Ok, now let's update our site with a pipeline !
 
+But before moving on with the next step, here is a diagram showing this process:
+
+```mermaid
+graph TD
+    A[Create service account on GCP] --> B[Give service account permissions to manage VMs]
+    B --> C[Give service account role to use default compute service account]
+    C --> D[Generate JSON key for service account]
+    D --> E[Containerize script that uses gcloud CLI with JSON key]
+    E --> F[Create VM instance with startup script installing Apache]
+    F --> G[Enable HTTP traffic to VM by creating firewall rule]
+    G --> H[Visit IP of VM and see default Apache landing page]
+```
+
 ## automate the process
 
 Now we are ready to do all of the above via GitHub Actions.
