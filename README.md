@@ -351,11 +351,25 @@ Each ticket row has:
 - ticket assignement button
 ```
 
-### moving on to 3-tier architecture
+### the swag part
+
+We have generated favicons and added them to our project.
+
+### moving on to 3-tier architecture ?
 
 Now we want to:
 
-- display the list of tickets dynamically (from the database)
+- display the list of tickets dynamically (from a database)
 - restrict who can access the database directly => [3-tier architecture](https://fr.wikipedia.org/wiki/Architecture_trois_tiers)
 
 ![3-tier architecture](./3tier-fr.png)
+
+
+... finally we don't do that and we use a simplified version of this architecture using a Firebase instance, which means we only have two tiers: the frontend and the database.
+
+### initiate a Firebase project
+
+- go to the Firebase and create your project attached to your GCP project
+- copy the HTML snippet into your code (with the correct keys)
+- verify that everything loads (Firebase + favicons) locally
+- deploy online and verify
