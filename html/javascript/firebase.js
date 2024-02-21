@@ -13,6 +13,7 @@ const firebaseConfig = {
     messagingSenderId: "964789920127",
     appId: "1:964789920127:web:7b3a3b6db531a9f5cffa4a",
     measurementId: "G-4KFP50HCJ9",
+    // TODO change this to be your Firebase realtime database url
     databaseUrl: "https://console.firebase.google.com/project/markets-agent/database/markets-agent-default-rtdb/data"
 };
 
