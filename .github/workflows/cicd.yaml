@@ -30,25 +30,24 @@ jobs:
         # all the commands you see after the `|` will be executed in the remote machine
         script: |
           ls
-          cp ./conf/apache.conf /etc/apache2/sites-available/000-default.conf
           sudo systemctl restart apache2
 
-  update-application:
-    name: update-application
-    needs: gcp-vm-sysadmin
-    runs-on: ubuntu-latest
-    steps:
-      # we checkout the repo
-      # this does `git clone git:myrepo.git && cd myrepo`
-      - name: actions/checkout@v4
-        uses: actions/checkout@v4 
-    # we copy inside /var/www/html the content of the repo
-      - name: copy-frontend
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIV_KEY }}
-          port: 22
-          source: /*
-          target: /var/www/html
+  # update-application:
+  #   name: update-application
+  #   needs: gcp-vm-sysadmin
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # we checkout the repo
+  #     # this does `git clone git:myrepo.git && cd myrepo`
+  #     - name: actions/checkout@v4
+  #       uses: actions/checkout@v4 
+  #   # we copy inside /var/www/html the content of the repo
+  #     - name: copy-frontend
+  #       uses: appleboy/scp-action@v0.1.7
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USERNAME }}
+  #         key: ${{ secrets.SSH_PRIV_KEY }}
+  #         port: 22
+  #         source: /*
+  #         target: /var/www/html
