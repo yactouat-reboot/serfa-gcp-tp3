@@ -28,6 +28,7 @@ $tickets = [
     ],
 ];
 
+// ROUTING
 switch ($path) {
     case '/':
         // get contents of the `views/home.html`
