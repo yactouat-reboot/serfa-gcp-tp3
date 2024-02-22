@@ -21,7 +21,7 @@ jobs:
         key: ${{ secrets.SSH_PRIV_KEY }}
         port: 22
         source: "conf/apache.conf"
-        target: /etc/apache2/sites-available
+        target: /home/${{ secrets.SSH_USERNAME }}
     # you can have a glance at all the available actions in https://github.com/marketplace?type=actions
     - name: sysadmin ops on GCP VM
       uses: appleboy/ssh-action@v1.0.1
@@ -40,8 +40,8 @@ jobs:
         script: |
           sudo apt-get update && sudo apt-get upgrade -y
           cd /etc/apache2/sites-available
-          cp ./conf/apache.conf /etc/apache2/sites-available
-          rm -rf ./conf
+          sudo cp ~/conf/apache.conf /etc/apache2/sites-available
+          sudo rm -rf ./conf
           sudo systemctl restart apache2
 
   update-application:
