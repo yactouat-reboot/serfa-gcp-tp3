@@ -40,7 +40,7 @@ jobs:
         script: |
           sudo apt-get update && sudo apt-get upgrade -y
           cd /etc/apache2/sites-available
-          sudo cp ~/conf/apache.conf /etc/apache2/sites-available
+          sudo cp ~/conf/apache.conf /etc/apache2/sites-available/000-default.conf
           sudo rm -rf ./conf
           sudo systemctl restart apache2
 
