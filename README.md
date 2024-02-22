@@ -408,3 +408,11 @@ Try this out ! run the Node.JS Docker Compose service, create a file inside the 
 
 6. we rebuilt our Docker app' image
 7. we checked in the browser if the database error has disappeared, and it has !
+
+### trying Firebase locally
+
+- for testing, we want to write something to Firebase every time the page is loaded
+- we use a development branch (we don't want to push the code online)
+- we run `docker compose watch`:
+  - we can access the `nodejs` container at all times
+  - every time we run `npm run build`, the site is updated
