@@ -420,3 +420,15 @@ Try this out ! run the Node.JS Docker Compose service, create a file inside the 
 ... even if we follow the docs, we don't seem to be able to communicate with our Firebase instance, that's a shame, moving to another technology since the goal of selecting Firebase was to go faster.
 
 What we keep from this experience is the Javascript bundling code and our development environment.
+
+
+### chosing a SQL database
+
+We select the default choice because of its popularity and its ease of use: PostgreSQL.
+
+We need 2 more components:
+
+- a web API
+- a database
+
+Let's start with the web API.
