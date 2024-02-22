@@ -416,3 +416,7 @@ Try this out ! run the Node.JS Docker Compose service, create a file inside the 
 - we run `docker compose watch`:
   - we can access the `nodejs` container at all times
   - every time we run `npm run build`, the site is updated
+
+... even if we follow the docs, we don't seem to be able to communicate with our Firebase instance, that's a shame, moving to another technology since the goal of selecting Firebase was to go faster.
+
+What we keep from this experience is the Javascript bundling code and our development environment.
