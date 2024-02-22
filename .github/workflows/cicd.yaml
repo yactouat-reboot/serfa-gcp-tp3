@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: actions/checkout@v4
       uses: actions/checkout@v4 
-    - name: copy-frontend
+    - name: copy-apache-conf
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -76,7 +76,7 @@ jobs:
           port: 22
           source: "*"
           target: /var/www/html
-      - name: sysadmin ops on GCP VM
+      - name: env-and-composer
         uses: appleboy/ssh-action@v1.0.1
         env:
           HOST: ${{ secrets.HOST }}
