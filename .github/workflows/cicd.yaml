@@ -41,8 +41,7 @@ jobs:
         script: |
           echo "updating system"
           sudo apt-get update && sudo apt-get upgrade -y
-          echo "installing php"
-          sudo apt-get install -y php
+          sudo apt-get install -y php zip git
           echo "installing apache"
           cd /etc/apache2/sites-available
           sudo cp ~/conf/apache.conf /etc/apache2/sites-available/000-default.conf
