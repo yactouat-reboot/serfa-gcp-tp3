@@ -19,7 +19,9 @@ jobs:
         touch .env
         docker compose  -f tests.docker-compose.yml up --build --force-recreate -d 
         docker compose exec frontend composer install
-        docker compose exec frontend ./vendor/bin/phpunit tests
+        sleep 2
+        docker compose  -f tests.docker-compose.yml up --build --force-recreate -d && docker compose exec frontend ./vendor/bin/phpunit tests/HomepageIntegrationTest.php --colors
+        docker compose  -f tests.docker-compose.yml up --build --force-recreate -d && docker compose exec frontend ./vendor/bin/phpunit tests/ApiTicketsIntegrationTest.php --colors
 
   # in this job, we will install/update dependencies and change global environment
   remote-sys-deps:

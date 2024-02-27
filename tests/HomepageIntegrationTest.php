@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
  * to run this test, go inside the Docker running service,
  * theh `./vendor/bin/phpunit tests --colors`
  */
-final class HomepageTest extends TestCase {
+final class HomepageIntegrationTest extends TestCase {
 
     // AAA pattern => arrange/act/assert
     public function testWithSlashRouteLoadsWebPageWithH1() {
