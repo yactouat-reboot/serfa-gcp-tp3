@@ -36,15 +36,14 @@ switch ($path) {
         }
 
         // making a dummy query
-        // TODO get tickets from DB here
-        $sql = "SELECT title, description, status, assigned_to, created_at
-            FROM tickets";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $conn = null;
-        // display the tickets
-        echo json_encode($tickets);
+        // $sql = "SELECT title, description, status, assigned_to, created_at
+        //     FROM tickets";
+        // $stmt = $conn->prepare($sql);
+        // $stmt->execute();
+        // $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $conn = null;
+        // // display the tickets
+        // echo json_encode($tickets);
         break;
     
     default:

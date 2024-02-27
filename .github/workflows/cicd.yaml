@@ -22,7 +22,7 @@ jobs:
         echo "DB_PASSWORD=postgres" >> .env
         echo "DB_PORT=5432" >> .env
         docker compose  -f tests.docker-compose.yml up --build --force-recreate -d 
-        docker compose exec frontend bash -c "sleep 5 && composer install && /var/www/html/vendor/bin/phpunit tests/HomepageIntegrationTest.php --colors && /var/www/html/vendor/bin/phpunit tests/ApiTicketsIntegrationTest.php --colors"
+        docker compose exec frontend bash -c "composer install && /var/www/html/vendor/bin/phpunit tests/HomepageIntegrationTest.php --colors && /var/www/html/vendor/bin/phpunit tests/ApiTicketsIntegrationTest.php --colors"
 
   # in this job, we will install/update dependencies and change global environment
   remote-sys-deps:
