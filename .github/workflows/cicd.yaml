@@ -16,6 +16,7 @@ jobs:
       uses: actions/checkout@v4
     - name: run tests
       run: |
+        touch .env
         docker compose  -f tests.docker-compose.yml up --build --force-recreate -d 
         docker compose exec frontend composer install
         docker compose exec frontend ./vendor/bin/phpunit tests

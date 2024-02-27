@@ -25,6 +25,9 @@ final class HomepageTest extends TestCase {
             // testing against what has been buffered before being displayed
             ob_get_contents()
         );
+
+        // tear down
+        unset($_SERVER['REQUEST_URI']);
     }
 
 }
