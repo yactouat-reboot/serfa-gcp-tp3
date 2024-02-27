@@ -23,7 +23,7 @@ jobs:
         echo "DB_PORT=5432" >> .env
         docker compose  -f tests.docker-compose.yml up --build --force-recreate -d 
         docker compose exec frontend composer install
-        sleep 2
+        sleep 5
         docker compose exec frontend ./vendor/bin/phpunit tests/HomepageIntegrationTest.php --colors
         docker compose exec frontend ./vendor/bin/phpunit tests/ApiTicketsIntegrationTest.php --colors
 
