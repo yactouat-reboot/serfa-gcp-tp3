@@ -61,7 +61,7 @@ jobs:
         script: |
           echo "updating system"
           sudo apt-get update && sudo apt-get upgrade -y
-          sudo apt-get install -y git libpq-dev php php-pgsql zip
+          sudo apt-get install -y git libpq-dev php php-pgsql php-mbstring php-xml zip
           echo "installing apache"
           cd /etc/apache2/sites-available
           sudo cp ~/conf/apache.conf /etc/apache2/sites-available/000-default.conf
